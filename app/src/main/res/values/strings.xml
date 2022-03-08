@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EncryptionApp</string>
+    <string name="keyText">Key:</string>
+    <string name="keyPlaceholder">No active key.</string>
+    <string name="createKeyButton">Create Key</string>
+    <string name="headerSubstitution">Substitution Cipher</string>
+    <string name="plainTextHint">Enter plain text to be encrypted.</string>
+    <string name="encryptButtonText">Encrypt</string>
+    <string name="cipherTextPlaceholder">Cipher text appears here.</string>
+    <string name="decryptButtonText">Decrypt</string>
+</resources>

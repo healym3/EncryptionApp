@@ -1,0 +1,9 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fragment_horizontal_margin">16dp</dimen>
+    <dimen name="fragment_vertical_margin">16dp</dimen>
+    <dimen name="regularMargin">10dp</dimen>
+    <dimen name="regularPadding">10dp</dimen>
+    <dimen name="headerPadding">8dp</dimen>
+    <dimen name="headerMargin">8dp</dimen>
+</resources>
