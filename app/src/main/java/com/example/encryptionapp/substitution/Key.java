@@ -1,7 +1,10 @@
 package com.example.encryptionapp.substitution;
 
+import java.util.Map;
+
 public class Key {
     private String key;
+    private Map<Character, Character> keyMap;
 
     private boolean checkKey(String key){
 
