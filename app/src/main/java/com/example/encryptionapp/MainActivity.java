@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         key = new Key();
-        key.generateKey();
+        key.setKey("defghijklmnopqrstuvwxyzabc");
         displayKey();
         Log.d("Key", "onCreate: " + key.getKey().toString());
 
