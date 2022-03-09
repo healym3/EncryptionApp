@@ -131,7 +131,7 @@
             android:ems="10"
             android:gravity="top"
             android:hint="@string/cipherTextHint"
-            android:inputType="textPersonName"
+            android:inputType="textMultiLine|textPersonName"
             android:selectAllOnFocus="true"
             android:text="@string/cipherTextPlaceholder"
             android:textAlignment="textStart" />
