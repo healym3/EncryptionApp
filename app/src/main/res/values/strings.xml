@@ -8,4 +8,5 @@
     <string name="encryptButtonText">Encrypt</string>
     <string name="cipherTextPlaceholder">Cipher text appears here.</string>
     <string name="decryptButtonText">Decrypt</string>
+    <string name="cipherTextHint">Enter cipher text.</string>
 </resources>

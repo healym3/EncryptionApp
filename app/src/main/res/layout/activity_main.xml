@@ -4,36 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryLightColor"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/decryptButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/regularMargin"
         android:text="@string/decryptButtonText"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/keyTextView"
         style="@style/textStyle"
-        android:layout_width="300dp"
-        android:layout_height="49dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:text="@string/keyPlaceholder"
-        android:textAlignment="center"
+        android:textAlignment="viewEnd"
         android:textColor="@color/primaryTextColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.736"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/keyLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/createKeyButton" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/keyLabelTextView"
         android:layout_width="70dp"
         android:layout_height="52dp"
         android:layout_margin="@dimen/regularMargin"
@@ -44,10 +45,10 @@
         android:textColor="@color/primaryTextColor"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/createKeyButton" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/headerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/headerMargin"
@@ -61,28 +62,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/createKeyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/createKeyButton"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/headerTextView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/cardViewStyle"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/primaryColor"
+        android:backgroundTint="@color/secondaryColor"
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/keyTextView">
 
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/plainEditText"
             android:layout_width="match_parent"
             android:layout_height="207dp"
             android:layout_margin="@dimen/regularMargin"
@@ -92,17 +94,19 @@
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
             android:padding="8dp"
+            android:selectAllOnFocus="true"
             android:textColor="@color/secondaryTextColor"
             android:textColorHint="#000000" />
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/encryptButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/regularMargin"
         android:layout_marginTop="46dp"
         android:text="@string/encryptButtonText"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -113,19 +117,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/primaryColor"
+        android:backgroundTint="@color/secondaryColor"
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2">
+        app:layout_constraintTop_toBottomOf="@+id/encryptButton">
 
-        <TextView
-            android:id="@+id/textView5"
+        <EditText
+            android:id="@+id/cipherEditText"
             style="@style/textStyle"
             android:layout_width="match_parent"
             android:layout_height="207dp"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="@string/cipherTextHint"
+            android:inputType="textMultiLine|textPersonName"
+            android:selectAllOnFocus="true"
             android:text="@string/cipherTextPlaceholder"
-            android:textAlignment="viewStart"
-            android:textColor="@color/primaryTextColor" />
+            android:textAlignment="textStart" />
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
