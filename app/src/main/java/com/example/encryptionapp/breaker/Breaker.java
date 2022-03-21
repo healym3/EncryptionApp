@@ -1,13 +1,19 @@
 package com.example.encryptionapp.breaker;
 
-import java.io.*;
+import android.content.Context;
+import android.util.Log;
+
 import java.security.SecureRandom;
 import java.util.*;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+
+
+import com.example.encryptionapp.data.Quadgram;
+import com.example.encryptionapp.util.Utils;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.List;
 
 
 public class Breaker {
@@ -18,9 +24,10 @@ public class Breaker {
     private Map<Character, Integer> transCharToInt;
     private Map<Integer, Character> transIntToChar;
     private int[] quadgrams;
+    //private Quadgram quadgram;
 
 
-    public Breaker() {
+    public Breaker(Context context) {
 
         this.transCharToInt = new HashMap<Character, Integer>();
 
@@ -32,34 +39,15 @@ public class Breaker {
         for (int i = 0; i < ALPHABET_SIZE; i++) {
             transIntToChar.put(i, ALPHABET.charAt(i));
         }
+        String jsonFileString = Utils.getJsonFromAssets(context, "en.json");
+        Gson gson = new Gson();
+        Type listQuadgramType = new TypeToken<List<Quadgram>>() { }.getType();
+        List<Quadgram> quadgramList = gson.fromJson(jsonFileString, listQuadgramType);
+        Quadgram quadgram = quadgramList.get(0);
+        quadgrams = new int[quadgram.getNumberQuadgrams()];
+        quadgrams = quadgram.getQuadgrams().stream().mapToInt(i -> i).toArray();
 
 
-        try (FileReader reader = new FileReader("src/main/java/com/example/encryptionapp/breaker/EN.json"))
-        {
-            StringBuilder jsonStringBuilder = new StringBuilder();
-            int ch;
-            while((ch = reader.read()) != -1 ){
-                jsonStringBuilder.append((char)ch);
-            }
-
-            JSONTokener tokener = new JSONTokener(jsonStringBuilder.toString());
-
-            JSONObject object = new JSONObject(tokener);
-            System.out.println("alphabet " + object.getString("alphabet"));
-            JSONArray quadgramsJson = object.getJSONArray("quadgrams");
-            this.quadgrams = new int[quadgramsJson.length()];
-            for (int i = 0; i < quadgramsJson.length(); i++) {
-                quadgrams[i] = quadgramsJson.optInt(i);
-            }
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -89,7 +77,7 @@ public class Breaker {
             charPositions.get(cipherBinary[i]).add(i);
         }
 
-        System.out.println(charPositions);
+        //System.out.println(charPositions);
 
         ArrayList<Integer> key = new ArrayList(ALPHABET_SIZE);
         for (int i = 0; i < ALPHABET_SIZE; i++) {
@@ -103,7 +91,7 @@ public class Breaker {
         for (int i = 0; i < ROUNDS; i++) {
             Collections.shuffle(key, new SecureRandom());
             int fitness = hillClimb(key, cipherBinary, charPositions);
-            System.out.println("fitness: " + fitness);
+            //System.out.println("fitness: " + fitness);
             if (fitness > localMaximum){
                 localMaximum = fitness;
                 localMaximumHit = 1;
@@ -115,7 +103,8 @@ public class Breaker {
                 }
             }
         }
-        System.out.println("Final: " + bestKey);
+        Log.d("Breaker", "breakCipher: BestKey: " + bestKey);
+        //System.out.println("Final: " + bestKey);
 
 
 
@@ -130,7 +119,8 @@ public class Breaker {
         ) {
             sb.append(transIntToChar.get(i));
         }
-        System.out.println(sb.toString());
+        Log.d("Breaker", "breakCipher: " + sb.toString());
+        //System.out.println(sb.toString());
     }
     private int hillClimb(ArrayList<Integer> key, int[] cipherBinary, ArrayList<ArrayList<Integer>> charPositions){
         int textLength = cipherBinary.length;
