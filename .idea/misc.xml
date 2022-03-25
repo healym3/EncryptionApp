@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/mhhea/AndroidStudioProjects/EncryptionApp/app/src/main/res/layout/activity_main.xml" value="0.375" />
+        <entry key="..\:/Users/mhhea/AndroidStudioProjects/EncryptionApp/app/src/main/res/layout/activity_main.xml" value="0.3575" />
+        <entry key="..\:/Users/mhhea/AndroidStudioProjects/EncryptionApp/app/src/main/res/layout/fragment_substitution_encryption.xml" value="0.5359375" />
         <entry key="..\:/Users/mhhea/AndroidStudioProjects/EncryptionApp/app/src/main/res/layout/substitution_key_fragment.xml" value="0.33" />
       </map>
     </option>

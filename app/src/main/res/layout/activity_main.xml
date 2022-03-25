@@ -7,23 +7,78 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/decryptButton"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        style="@style/cardViewStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/regularMargin"
-        android:text="@string/decryptButtonText"
-        android:textColor="#000000"
+        android:layout_marginVertical="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/saveKeyButton"
+                style="@style/buttonStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/saveKeyButton"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/createKeyButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/customKeyEditText"
+                style="@style/textStyle"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:hint="@string/customKeyHint"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#6D4C41"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/saveKeyButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/createKeyButton"
+                style="@style/buttonStyle2"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/createKeyButton"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:id="@+id/decryptButton"
+        style="@style/buttonStyle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/decryptButtonText"
+        app:layout_constraintBottom_toTopOf="@+id/cardView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/keyTextView"
         style="@style/textStyle"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
         android:text="@string/keyPlaceholder"
         android:textAlignment="viewEnd"
         android:textColor="@color/primaryTextColor"
@@ -31,12 +86,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toEndOf="@+id/keyLabelTextView"
-        app:layout_constraintTop_toBottomOf="@+id/createKeyButton" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <TextView
         android:id="@+id/keyLabelTextView"
-        android:layout_width="70dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/regularMargin"
         android:layout_marginStart="12dp"
         android:padding="@dimen/regularPadding"
@@ -45,96 +100,125 @@
         android:textColor="@color/primaryTextColor"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createKeyButton" />
-
-    <TextView
-        android:id="@+id/headerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/headerMargin"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:padding="@dimen/headerPadding"
-        android:text="@string/headerSubstitution"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/createKeyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/createKeyButton"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toEndOf="@+id/headerTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/cardViewStyle"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/secondaryColor"
         app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/encryptButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/keyTextView">
 
         <EditText
             android:id="@+id/plainEditText"
-            android:layout_width="match_parent"
-            android:layout_height="207dp"
-            android:layout_margin="@dimen/regularMargin"
-            android:ems="10"
-            android:gravity="start|top"
+            style="@style/editTextMultiLineStyle"
             android:hint="@string/plainTextHint"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:padding="8dp"
-            android:selectAllOnFocus="true"
-            android:textColor="@color/secondaryTextColor"
-            android:textColorHint="#000000" />
+            android:textColorHint="#004D40"
+            tools:ignore="TextContrastCheck" />
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/encryptButton"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/regularMargin"
-        android:layout_marginTop="46dp"
         android:text="@string/encryptButtonText"
         android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/keyTextView"
+        tools:ignore="TextContrastCheck" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        style="@style/cardViewStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/secondaryColor"
+        style="@style/cardViewStyle2"
         app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/decryptButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/encryptButton">
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <EditText
             android:id="@+id/cipherEditText"
             style="@style/textStyle"
             android:layout_width="match_parent"
-            android:layout_height="207dp"
+            android:layout_height="90dp"
             android:ems="10"
             android:gravity="top"
             android:hint="@string/cipherTextHint"
             android:inputType="textMultiLine|textPersonName"
             android:selectAllOnFocus="true"
             android:text="@string/cipherTextPlaceholder"
-            android:textAlignment="textStart" />
+            android:textAlignment="textStart"
+            android:textColor="#004D40"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        style="@style/cardViewStyle3"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <EditText
+            android:id="@+id/cipherToBreakEditText"
+            style="@style/editTextMultiLineStyle"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:hint="@string/cipherToBreakHint"
+            android:minHeight="48dp"
+            android:textColorHint="#004D40"
+            tools:ignore="TextContrastCheck" />
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/breakCipherButton"
+        style="@style/buttonStyle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/breakCipherButton"
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4" />
+
+    <androidx.cardview.widget.CardView
+        style="@style/cardViewStyle3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakCipherButton">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/cipherBreakerResultEditText"
+                    style="@style/textStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:ems="10"
+                    android:hint="@string/breakerResultText"
+                    android:inputType="textMultiLine|textPersonName"
+                    android:minHeight="48dp"
+                    android:scrollHorizontally="false"
+                    android:textColorHint="#37474F" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

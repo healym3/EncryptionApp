@@ -25,7 +25,11 @@ public class Breaker {
     private Map<Integer, Character> transIntToChar;
     private int[] quadgrams;
     //private Quadgram quadgram;
+    private String breakerResult;
 
+    public String getBreakerResult() {
+        return breakerResult;
+    }
 
     public Breaker(Context context) {
 
@@ -119,7 +123,8 @@ public class Breaker {
         ) {
             sb.append(transIntToChar.get(i));
         }
-        Log.d("Breaker", "breakCipher: " + sb.toString());
+        breakerResult = sb.toString();
+        Log.d("Breaker", "breakCipher: " + breakerResult);
         //System.out.println(sb.toString());
     }
     private int hillClimb(ArrayList<Integer> key, int[] cipherBinary, ArrayList<ArrayList<Integer>> charPositions){
